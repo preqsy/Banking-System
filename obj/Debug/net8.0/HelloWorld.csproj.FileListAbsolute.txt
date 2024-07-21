@@ -1,0 +1,14 @@
+/Users/macbook/Documents/killer/HelloWorld/bin/Debug/net8.0/HelloWorld
+/Users/macbook/Documents/killer/HelloWorld/bin/Debug/net8.0/HelloWorld.deps.json
+/Users/macbook/Documents/killer/HelloWorld/bin/Debug/net8.0/HelloWorld.runtimeconfig.json
+/Users/macbook/Documents/killer/HelloWorld/bin/Debug/net8.0/HelloWorld.dll
+/Users/macbook/Documents/killer/HelloWorld/bin/Debug/net8.0/HelloWorld.pdb
+/Users/macbook/Documents/killer/HelloWorld/obj/Debug/net8.0/HelloWorld.GeneratedMSBuildEditorConfig.editorconfig
+/Users/macbook/Documents/killer/HelloWorld/obj/Debug/net8.0/HelloWorld.AssemblyInfoInputs.cache
+/Users/macbook/Documents/killer/HelloWorld/obj/Debug/net8.0/HelloWorld.AssemblyInfo.cs
+/Users/macbook/Documents/killer/HelloWorld/obj/Debug/net8.0/HelloWorld.csproj.CoreCompileInputs.cache
+/Users/macbook/Documents/killer/HelloWorld/obj/Debug/net8.0/HelloWorld.dll
+/Users/macbook/Documents/killer/HelloWorld/obj/Debug/net8.0/refint/HelloWorld.dll
+/Users/macbook/Documents/killer/HelloWorld/obj/Debug/net8.0/HelloWorld.pdb
+/Users/macbook/Documents/killer/HelloWorld/obj/Debug/net8.0/HelloWorld.genruntimeconfig.cache
+/Users/macbook/Documents/killer/HelloWorld/obj/Debug/net8.0/ref/HelloWorld.dll
