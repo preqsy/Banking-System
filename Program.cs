@@ -2,9 +2,11 @@
 
 class User : Bank
 {
+    private readonly string path = "./userDetails/";
     public string? firstName { get; set; }
     public string? lastName { get; set; }
     public string? userName { get; set; }
+
     private string? userPassword { get; set; }
 
     public void Startup()
@@ -13,14 +15,30 @@ class User : Bank
         var userInput = Console.ReadLine();
 
         int.TryParse(userInput, out int userOption);
-        if (userOption == 1)
+
+        while (userOption != 3)
         {
-            Registration();
+
+            if (userOption == 1)
+            {
+                Registration();
+            }
+            if (userOption == 2)
+            {
+                Login();
+            }
+            if (userOption == 3)
+            {
+                return;
+            }
+            else
+            {
+                Startup();
+
+            }
         }
-        if (userOption == 2)
-        {
-            Login();
-        }
+
+
     }
 
     private void Registration()
@@ -31,6 +49,24 @@ class User : Bank
         var userLastName = Console.ReadLine();
         Console.WriteLine("Enter Your User Name");
         var userNameInput = Console.ReadLine();
+
+        if (File.Exists(path + userNameInput + ".txt"))
+        {
+            Console.WriteLine("********Username exist already********");
+
+            Console.WriteLine("1. \n Register? \n 2. Login? \n");
+
+            int.TryParse(Console.ReadLine(), out int userInput);
+
+            if (userInput == 1)
+            { Registration(); }
+
+            if (userInput == 2)
+            { Login(); }
+
+
+        }
+
         Console.WriteLine("Enter Your Password");
         var userPasswordInput = Console.ReadLine();
 
@@ -38,6 +74,16 @@ class User : Bank
         lastName = userLastName.ToLower();
         userPassword = userPasswordInput;
         userName = userNameInput.ToLower();
+
+        var file = new FileInfo(path + userName + ".txt");
+
+
+        using (StreamWriter sw = file.CreateText())
+        {
+            sw.WriteLine(userName);
+            sw.WriteLine(userPassword);
+        }
+
 
         Console.WriteLine("Registration Successfull!!!!!!!!!!");
 
@@ -49,20 +95,44 @@ class User : Bank
     private void Login()
     {
         Console.WriteLine("Login To Your Account");
+
+
         Console.WriteLine("Enter Your Username");
         var userNameInput = Console.ReadLine();
 
         Console.WriteLine("Enter Your Password");
         var userPasswordInput = Console.ReadLine();
 
-        if (userName == userNameInput.ToLower() && userPassword == userPasswordInput)
-        { Console.WriteLine("Login SuccessFulll!!!!"); BankDetails(); }
+        if (!File.Exists(path + userNameInput + ".txt"))
+        {
+            throw new ArgumentException("Username doesn't exist");
+        }
+        FileInfo file = new FileInfo(path + userNameInput + ".txt");
+
+        using (StreamReader sr = file.OpenText())
+        {
+            userName = sr.ReadLine();
+            userPassword = sr.ReadLine();
+
+            if (userNameInput.ToLower() == userName && userPasswordInput == userPassword)
+            {
+                Console.WriteLine("************Login Successful!!!!!***********");
+
+                BankDetails();
+
+            }
+
+
+
+        }
+
+
 
     }
 
     private void BankDetails()
     {
-        Console.WriteLine("Welcme to your dashboard!!!!!!!!!");
+        Console.WriteLine($"************* {userName.ToUpper()} Welcome to your dashboard!!!!!!!!!**************");
         Console.WriteLine("1. Check Balance \n 2. View Details \n 3. Deposit \n 4. Withdraw  \n 5. Exit");
         var userInput = Console.ReadLine();
         int.TryParse(userInput, out int userOption);
@@ -95,7 +165,7 @@ class User : Bank
 
         else if (userOption == 5)
         {
-            return;
+            Environment.Exit(0);
         }
 
         else
